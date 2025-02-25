@@ -1,5 +1,5 @@
 //Modelo de Empresa
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 const companySchema = Schema(
     {
@@ -20,9 +20,9 @@ const companySchema = Schema(
             required: [true, 'Years of Experience is required']
         },
         businessCategory: {
-            type: String,
-            maxLength: [25, `Can´t be overcome 25 characters`],
-            required: [true, 'Bussines Category is required']
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Category',
+            required: [true, 'Category is required']
         },
         direction: {
             type: String,
