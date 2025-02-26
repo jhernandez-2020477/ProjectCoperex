@@ -10,7 +10,7 @@ const reportSchema = Schema(
         companies: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Compay', 
+                ref: 'Company', 
                 //required: true
             }
         ],
