@@ -23,6 +23,36 @@ export const registerValidation = [
     validateErrors
 ]
 
+export const validUpdateUser = [
+    body('name', 'Name is optional')
+        .optional(),
+    body('surname', 'Surname is optional')
+        .optional(),
+    body('username', 'Username is optional')
+        .optional()
+        .toLowerCase()
+        .custom(existUsername),
+    body('email', 'Email is optional or is not a valid email')
+        .optional()
+        .isEmail()
+        .custom(existEmail),
+    validateErrors
+]
+
+export const validUpdatePassword = [
+    body('currentPassword', 'Current password cannot be empty')
+        .notEmpty() 
+        .withMessage('Password cannot be empty'),
+    body('newPassword', 'New password cannot be empty')
+        .notEmpty()
+        .withMessage('Your new password cannot be empty')
+        .isStrongPassword()
+        .withMessage('Your new password must be strong')
+        .isLength({ min: 8 }) 
+        .withMessage('New password must be at least 8 characters long'),
+        validateErrorWithoutImg
+]
+
 //Validacines del login
 export const loginValidation = [
     body('userLoggin', 'Username or Email cannot be empty')
@@ -50,6 +80,18 @@ export const validSaveCate = [
         validateErrorWithoutImg
 ]
 
+export const validUpdateCate = [
+    body('name', 'Name cannot is optional')
+        .optional() 
+        .isLength({ max: 50 })
+        .withMessage('Can´t be overcome 50 characters'),
+    body('description', 'Description is optional')
+        .optional()
+        .isLength({ max: 150 })
+        .withMessage('Can´t be overcome 150 characters'),       
+        validateErrorWithoutImg
+]
+
 //EMPRESA
 
 export const validSaveCompany = [
@@ -62,9 +104,8 @@ export const validSaveCompany = [
         .notEmpty()
         .isIn(['BAJO', 'MEDIO', 'ALTO'])
         .withMessage('Impact Level must be either "BAJO","MEDIO" or "ALTO"'),
-    body('yearsOfExperience', 'Years Of Experience cannot be empty')
+    body('yearsOfExperience', 'Years Of Experience cannot be empty and must be number')
         .notEmpty()
-        .isLength({ max: 10 })
         .withMessage('Can´t be overcome 10 characters'),
     body('businessCategory', 'Business Category cannot be empty')
         .notEmpty(),
