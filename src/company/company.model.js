@@ -15,8 +15,7 @@ const companySchema = Schema(
             enum: ['BAJO', 'MEDIO', 'ALTO'],
         },
         yearsOfExperience: {
-            type: String,
-            maxLength: [10, `Can´t be overcome 10 characters`],
+            type: Number,
             required: [true, 'Years of Experience is required']
         },
         businessCategory: {
