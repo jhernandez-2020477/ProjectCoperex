@@ -1,6 +1,6 @@
 //Rutas de autenticación
 import { Router } from "express";
-import { saveCompany, updateCompany } from "./company.controller.js";
+import { getAll, getAllAZOrZA, getByCategory, getYearOfExperience, saveCompany, updateCompany } from "./company.controller.js";
 import { isAdmin, validateJwt } from "../../middlewares/validate.jwt.js"
 import { validSaveCompany, validUpdateCompany  } from "../../helpers/validators.js";
 
@@ -24,6 +24,42 @@ api.put(
         validUpdateCompany
     ],
     updateCompany
+)
+
+api.get(
+    '/getCompanies',
+    [
+        validateJwt,
+        isAdmin
+    ],
+    getAll
+)
+
+api.get(
+    '/',
+    [
+        validateJwt,
+        isAdmin
+    ],
+    getYearOfExperience
+)
+
+api.get(
+    '/cate',
+    [
+        validateJwt,
+        isAdmin
+    ],
+    getByCategory
+)
+
+api.get(
+    '/getAscOrDesc',
+    [
+        validateJwt,
+        isAdmin
+    ],
+    getAllAZOrZA
 )
 
 //Exportar 
