@@ -9,6 +9,8 @@ import cors from 'cors'
 import authRoutes from '../src/auth/auth.routes.js'
 import categoryRoutes from '../src/category/category.routes.js'
 import companyRoutes from '../src/company/company.routes.js'
+import reportRoutes from '../src/report/report.routes.js'
+import userRoutes from '../src/user/user.routes.js'
 import { limiter } from '../middlewares/rate.limit.js'
 
 const configs = (app)=>{
@@ -33,6 +35,12 @@ const routes = (app)=>{
 
     //Empresas
     app.use('/v1/company', companyRoutes)
+
+    //Reporte
+    app.use('/v1/report', reportRoutes)
+
+    //Usuario
+    app.use('/v1/user', userRoutes)
 }
 
 export const initServer = async()=>{
