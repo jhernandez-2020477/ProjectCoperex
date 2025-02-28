@@ -13,6 +13,44 @@ export const test = (req, res)=>{
     )
 }
 
+export const initAdminUser = async(req, res) => {
+    try {
+        // Verificar si ya existe un usuario con rol ADMIN
+        let admin = await User.findOne(
+            { 
+                role: 'ADMIN' 
+            }
+        )
+        
+        if (!admin) {
+            const adminData = {
+                name: 'Juan',
+                surname: 'Hernández',
+                username: 'jhernandez',
+                email: 'jhernan@gmail.com',
+                password: '1024578@Vv0412', 
+                role: 'ADMIN'
+            }
+
+            let newAdmin = new User(adminData)
+            newAdmin.password = await encrypt(newAdmin.password)
+            await newAdmin.save();
+            
+            console.log('Admin user created successfully!')
+        } else {
+            //console.log('Admin user already exists!')
+        }
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send(
+            {
+                message: 'Error creating admin user:', 
+                err
+            }
+        )
+    }
+}
+
 //Register 
 export const register = async(req, res)=>{
     try {

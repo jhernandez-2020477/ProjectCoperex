@@ -1,7 +1,7 @@
 ////Conexion a la DB
 import mongoose from "mongoose";
 import { initCategory } from '../src/category/category.controller.js'
-
+import { initAdminUser } from "../src/auth/auth.controller.js";
 
 export const connect = async()=>{
     try {
@@ -17,6 +17,10 @@ export const connect = async()=>{
         })
         mongoose.connection.once('open',()=>{
             console.log("MongoDB | connected to database")
+        })
+        mongoose.connection.once('open', () => {
+            //console.log("MongoDB | User created");
+            initAdminUser()
         })
         mongoose.connection.once('open', () => {
             //console.log("MongoDB | Category created");
