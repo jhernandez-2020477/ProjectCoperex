@@ -106,6 +106,12 @@ export const getAll = async(req, res)=>{
         const reports = await Report.find()
             .skip(skip)
             .limit(limit)
+            .populate(
+                {
+                    path: 'companies',
+                    select : 'name -_id'
+                }
+            )
         if(reports.length === 0){
             return res.send(
                 {
