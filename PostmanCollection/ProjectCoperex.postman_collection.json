@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "0133b251-36a7-4c64-bb60-2bf0654e34a4",
+		"name": "ProjectCoperex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37951911"
+	},
+	"item": [
+		{
+			"name": "Form Company",
+			"item": [
+				{
+					"name": "saveCompany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Constructora José",
+									"type": "text"
+								},
+								{
+									"key": "impactLevel",
+									"value": "Medio",
+									"type": "text"
+								},
+								{
+									"key": "yearsOfExperience",
+									"value": "139",
+									"type": "text"
+								},
+								{
+									"key": "businessCategory",
+									"value": "67c08146bea5294ae48e7994",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "13 calle 7-29 zona 7 de mixc0",
+									"type": "text"
+								},
+								{
+									"key": "contact",
+									"value": "38121441",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/saveCompany",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"saveCompany"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3626/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "registerCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Construcción e Inmobiliaria ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Empresas involucradas en la construcción, arquitectura, y bienes raíces.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/v1/category/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCompany",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Johnson & Johnson Update",
+									"type": "text"
+								},
+								{
+									"key": "impactLevel",
+									"value": "Alto",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "yearsOfExperience",
+									"value": "139 ",
+									"type": "text"
+								},
+								{
+									"key": "businessCategory",
+									"value": "67c079a86973c6b40fbbea66",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "1 Johnson & Johnson Plaza, New Brunswick, NJ 08933, USA",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "contact",
+									"value": "41227718",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/v1/company/67c08051bea5294ae48e7960",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"company",
+								"67c08051bea5294ae48e7960"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCompanies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/company/getCompanies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"company",
+								"getCompanies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getYearOfExperience",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/company/?yearsOfExperience=100-150",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"company",
+								""
+							],
+							"query": [
+								{
+									"key": "yearsOfExperience",
+									"value": "100-150"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/company/cate?categoryId=67bd308d1307a93bd9a1d3e4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"company",
+								"cate"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "67bd308d1307a93bd9a1d3e4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAscOrDesc",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/company/getAscOrDesc?sortOrder=asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"company",
+								"getAscOrDesc"
+							],
+							"query": [
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReport",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/report/generateReport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"report",
+								"generateReport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/category/67c08146bea5294ae48e7994",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								"67c08146bea5294ae48e7994"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Tecnología ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Desarrollo de software, inteligencia artificial, computación en la nube, redes, dispositivos electrónicos.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/v1/category/67c079a86973c6b40fbbea66",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"category",
+								"67c079a86973c6b40fbbea66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllReports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/report/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"report",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Juan David",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/v1/user/67bd2a50226852fec7907eb9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"67bd2a50226852fec7907eb9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "currentPassword",
+									"value": "1024578@Vv0412",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "1024578@Vv",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3626/v1/user/password/67bd2a50226852fec7907eb9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"password",
+								"67bd2a50226852fec7907eb9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3626/v1/user/67be962e9793c27595ff33f2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3626",
+							"path": [
+								"v1",
+								"user",
+								"67be962e9793c27595ff33f2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3626/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3626",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Elias",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "Hernández",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ehernandez",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ehernan@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1024578@Vv",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/C:/Users/Informatica/Downloads/ProjectCoperex/uploads/img/users/user.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3626/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3626",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setGlobalVariable(\"token\", data.token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "userLoggin",
+							"value": "jhernan@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1024578@Vv0412",
+							"type": "text"
+						},
+						{
+							"key": "userLoggin",
+							"value": "eherna@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1024578@Vv",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3626/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3626",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
